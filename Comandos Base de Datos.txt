@@ -1,0 +1,61 @@
+Create table pr_productos
+(
+prodId  INT NOT NULL Primary Key,
+prodNombre VARCHAR(255) NOT NULL,
+prodFoto VARBINARY(MAX) NOT NULL,
+prodDescripcion VARCHAR(255) NOT NULL,
+prodPrecio FLOAT(24),
+prodStock INT
+)
+
+Create table pr_detalle_compras
+(
+detaId INT NOT NULL Primary Key,
+prodId INT NOT NULL,
+compId INT NOT NULL,
+detaCantidad INT,
+detaPrecioCompra FLOAT(24)
+)
+
+Create table pr_compras
+(
+compId INT NOT NULL Primary Key,
+clieId INT NOT NULL,
+pagoId INT NOT NULL,
+compFecha VARCHAR(11),
+compMonto FLOAT(24),
+compEstado VARCHAR(50)
+)
+
+Create table pr_cliente
+(
+clieId INT NOT NULL Primary Key,
+clieDocumento VARCHAR(20) NOT NULL,
+cliePrimerNombre VARCHAR(40) NOT NULL,
+clieSegundoNombre VARCHAR(40) NOT NULL,
+cliePrimerApellido VARCHAR(40) NOT NULL,
+clieSegundoApellido VARCHAR(40) NOT NULL,
+clieLogin VARCHAR(50) NOT NULL,
+clieDireccion VARCHAR(255) NOT NULL,
+clieEmail VARCHAR(50) NOT NULL,
+clieContraseña VARCHAR(50) NOT NULL
+)
+
+Create table pr_pagos
+(
+pagoId INT NOT NULL Primary Key,
+pagoMonto FLOAT(24) NOT NULL
+)
+
+Alter table pr_compras
+Add foreign key(clieId) references pr_cliente(clieId)
+
+Alter table pr_compras
+Add foreign key(pagoId) references pr_pagos(pagoId)
+
+Alter table pr_detalle_compras
+Add foreign key(prodId) references pr_productos(prodId)
+
+Alter table pr_detalle_compras
+Add foreign key(compId) references pr_compras(compId)
+
