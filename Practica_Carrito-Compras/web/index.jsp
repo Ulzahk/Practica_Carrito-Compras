@@ -25,7 +25,7 @@
                         <a class="nav-link" href="#">Ofertas del Día</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Carrito</a>
+                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus">(<label style="color: orange;">${contador}</label>)</i>Carrito</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -48,7 +48,7 @@
             </div>
         </nav>
 
-        <div class="container mt-2">
+        <div class="container mt-4">
             <div class="row">
                 <c:forEach var="p" items="${productos}">
                     <div class="col-sm-4">
@@ -63,7 +63,7 @@
                             <div class="card-footer text-center">
                                 <label>${p.getDescripcion()}</label>
                                 <div>
-                                    <a href="" class="btn btn-outline-info">Agregar a Carrito</a>
+                                    <a href="Controlador?accion=AgregarCarrito&id=${p.getId()}" class="btn btn-outline-info">Agregar a Carrito</a>
                                     <a href="" class="btn btn-danger">Comprar</a>
                                 </div>
                             </div>
