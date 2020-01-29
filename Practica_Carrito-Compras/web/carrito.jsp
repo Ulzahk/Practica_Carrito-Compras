@@ -75,7 +75,10 @@
                                     </td>
 
                                     <td>${car.getPrecioCompra()}</td>
-                                    <td>${car.getCantidad()}</td>
+                                    <td>
+                                        <input type="hidden" id="idpro" value="${car.getProdId()}"/>
+                                        <input type="number" id="Cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1"/>
+                                    </td>
                                     <td>${car.getSubTotal()}</td>
                                     <td>
                                         <input type="hidden" id="idp" value="${car.getProdId()}"/>
