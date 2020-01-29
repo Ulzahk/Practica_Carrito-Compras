@@ -19,6 +19,27 @@ public class ProductoDAO {
     PreparedStatement ps;
     ResultSet rs;
     
+    public Producto listarId(int id){
+        String sql="Select * from pr_productos where prodId="+id;
+        Producto p = new Producto();
+        try {
+            conn=cn.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                p.setId(rs.getInt(1));
+                p.setNombre(rs.getString(2));
+                p.setFoto(rs.getBinaryStream(3));
+                p.setDescripcion(rs.getString(4));
+                p.setPrecio(rs.getDouble(5));
+                p.setStock(rs.getInt(6));
+            }
+        } catch (Exception e) {
+        }
+        return p;
+    }
+    
     public List listar(){
         List<Producto> productos = new ArrayList<>();
         String sql="Select * from pr_productos";
