@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <table class="table table-hover table-responsive">
-                        <thead>
+                        <thead class="bg-info">
                             <tr>
                                 <th>ITEM</th>
                                 <th>NOMBRES</th>
@@ -70,16 +70,17 @@
                                     <td>${car.getItem()}</td>
                                     <td>${car.getNombre()}</td>
                                     <td>
+                                        <img src="ControladorIMG?id=${car.getProdId()}" width="100" height="100"/>
                                         ${car.getDescripcion()}
-                                        <img src="ControladorIMG?id=${car.prodId}" width="100" height="100"/>
                                     </td>
-                            
+
                                     <td>${car.getPrecioCompra()}</td>
                                     <td>${car.getCantidad()}</td>
                                     <td>${car.getSubTotal()}</td>
                                     <td>
-                                        <a href="#">Eliminar</a>
-                                        <a href="#">Editar</a>
+                                        <input type="hidden" id="idp" value="${car.getProdId()}"/>
+                                        <a href="#" id="btnDelete" class="btn btn-danger rounded mr-1"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="#" class="btn btn-warning rounded"><i class="fas fa-pen"></i></a>
                                     </td>
                                 </tr> 
                             </c:forEach>
@@ -94,11 +95,11 @@
                         </div>
                         <div class="card-body">
                             <label>Subtotal: </label>
-                            <input type="text" value="$ ${totalPagar}" readonly="" class="form-control">
+                            <input type="text" value="$ ${totalPagar}" readonly="" class="form-control text-center font-weight-bold">
                             <label>Descuento: </label>
-                            <input type="text" value="$ 0.00"readonly="" class="form-control">
+                            <input type="text" value="$ 0.00"readonly="" class="form-control text-center font-weight-bold">
                             <label>Total Pagar: </label>
-                            <input type="text" value="$ ${totalPagar}"readonly="" class="form-control">
+                            <input type="text" value="$ ${totalPagar}"readonly="" class="form-control text-center font-weight-bold">
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
@@ -112,5 +113,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/funciones.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     </body>
 </html>
