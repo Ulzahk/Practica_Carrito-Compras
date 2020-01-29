@@ -4,7 +4,7 @@ prodId  INT NOT NULL Primary Key,
 prodNombre VARCHAR(255) NOT NULL,
 prodFoto VARBINARY(MAX) NOT NULL,
 prodDescripcion VARCHAR(255) NOT NULL,
-prodPrecio FLOAT(24),
+prodPrecio DECIMAL(38,3),
 prodStock INT
 )
 
