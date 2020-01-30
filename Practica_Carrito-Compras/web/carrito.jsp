@@ -106,7 +106,7 @@
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
-                            <a href="#" class="btn btn-danger btn-block">Generar Compra</a>
+                            <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar Compra</a>
                         </div>
                     </div>
                 </div>

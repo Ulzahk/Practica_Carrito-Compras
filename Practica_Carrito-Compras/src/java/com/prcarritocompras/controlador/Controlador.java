@@ -1,8 +1,13 @@
 package com.prcarritocompras.controlador;
 
+import com.prcarritocompras.config.Fecha;
 import com.prcarritocompras.modelo.Carrito;
+import com.prcarritocompras.modelo.Cliente;
+import com.prcarritocompras.modelo.Compras;
+import com.prcarritocompras.modelo.Pago;
 import com.prcarritocompras.modelo.Producto;
-import com.prcarritocompras.modelo.ProductoDAO;
+import com.prcarritocompras.modelodao.CompraDAO;
+import com.prcarritocompras.modelodao.ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
@@ -111,17 +116,17 @@ public class Controlador extends HttpServlet {
             case "ActualizarCantidad":
                 int idpro = Integer.parseInt(request.getParameter("idp"));
                 int cant = Integer.parseInt(request.getParameter("Cantidad"));
-                for(int i = 0; i<listaCarrito.size(); i++){
-                    if(listaCarrito.get(i).getProdId()==idpro){
+                for (int i = 0; i < listaCarrito.size(); i++) {
+                    if (listaCarrito.get(i).getProdId() == idpro) {
                         listaCarrito.get(i).setCantidad(cant);
-                        double st=listaCarrito.get(i).getPrecioCompra()*cant;
+                        double st = listaCarrito.get(i).getPrecioCompra() * cant;
                         listaCarrito.get(i).setSubTotal(st);
                     }
                 }
                 break;
+                
             case "Carrito":
                 DecimalFormat numberFormat = new DecimalFormat("#.00");
-                double totalPagar = 0.0;
                 numberFormat.format(totalPagar);
                 request.setAttribute("carrito", listaCarrito);
                 for (int i = 0; i < listaCarrito.size(); i++) {
@@ -129,6 +134,19 @@ public class Controlador extends HttpServlet {
                 }
                 request.setAttribute("totalPagar", totalPagar);
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
+                break;
+
+            case "GenerarCompra":
+                Cliente cliente = new Cliente();
+                cliente.setId(1);
+                CompraDAO dao = new CompraDAO();
+                Compras compras = new Compras(cliente, 1, Fecha.FechaBD(), totalPagar, "Cancelado", listaCarrito);
+                int res=dao.GenerarCompra(compras);
+                if(res!=0&&totalPagar>0){
+                    request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+                }else{
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                }
                 break;
             default:
                 request.setAttribute("productos", productos);

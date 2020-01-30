@@ -1,6 +1,7 @@
-package com.prcarritocompras.modelo;
+package com.prcarritocompras.modelodao;
 
 import com.prcarritocompras.config.clsConexion;
+import com.prcarritocompras.modelo.Producto;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.InputStream;

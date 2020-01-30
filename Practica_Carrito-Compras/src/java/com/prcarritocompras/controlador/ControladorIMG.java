@@ -1,6 +1,6 @@
 package com.prcarritocompras.controlador;
 
-import com.prcarritocompras.modelo.ProductoDAO;
+import com.prcarritocompras.modelodao.ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

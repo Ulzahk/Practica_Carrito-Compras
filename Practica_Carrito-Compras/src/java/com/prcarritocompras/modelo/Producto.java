@@ -5,12 +5,12 @@ import java.io.InputStream;
 
 public class Producto {
     
-    int id;
-    String nombre;
-    InputStream foto;
-    String descripcion;
-    double precio;
-    int stock;
+    public int id;
+    public String nombre;
+    public InputStream foto;
+    public String descripcion;
+    public double precio;
+    public int stock;
 
     public Producto() {
     }
